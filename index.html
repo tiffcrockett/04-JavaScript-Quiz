@@ -21,7 +21,7 @@
                 <div id="quiz" class="container" style="display: none;">  
                     <div class="timeScore">
                         <div id="viewScores">
-                            <a href="#highScore">View High Scores</a>
+                            <a href='#playersList;'>View High Scores</a>
                         </div>
                         <div id="myScore"></div>
                         <div id="timer">Timer:
@@ -46,20 +46,18 @@
                     <div class="noTimeScore">
                         <h3><b>Game Over!</b></h3> 
                         <div id="result"></div>
-                        <div id="player">
-                            <label>Enter your initials:</label><br>
-                                <input type="text" id="initials"/><br>
-                                <button id="submitButton" class="submit-btn" onclick="renderPlayersList();">SUBMIT</button>
-                        </div>
+                        <label>Enter your initials:</label><br>
+                            <input type="text" id="initials"/><br>
+                            <button id="submitButton" class="submit-btn" onclick="addPlayerToList();">SUBMIT</button>
                     </div> 
                 </div> 
 
                 <div id="highScore" class="container" style="display: none;">
                     <div class="noTimeScore">
                         <h3><b>High Scores</b></h3>
-                        <ul id="playersList"></ul>
+                        <div id="allPlayersList"></div>
                         <button id="resetButton" class="reset-btn" onclick="startOver();">START OVER</button><br>
-                        <button id="clearStorageButton" class="clear-btn" onclick="clearStorage();">CLEAR HIGH SCORES</button>
+                        <button id="clearStorageButton" class="clear-btn" onclick="clear();">CLEAR HIGH SCORES</button>
                     </div>
                 </div> 
 

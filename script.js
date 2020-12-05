@@ -10,63 +10,19 @@ var opt1 = document.getElementById('opt1');
 var opt2 = document.getElementById('opt2');
 var opt3 = document.getElementById('opt3');
 var opt4 = document.getElementById('opt4'); 
-
+var viewScoresEl = document.getElementById('viewScores');
 var myScore = document.getElementById('myScore');
 var timer = document.getElementById('timer');
 var comment = document.getElementById('comment'); 
-var result = document.getElementById('result');  
+var result = document.getElementById('result'); 
+var playerList = document.getElementById('allPlayersList');
+var initials = document.getElementById('initials')
 var startButton = document.getElementById('startButton');
 var nexttButton = document.getElementById('nextButton');
 var submitButton = document.getElementById('submitButton');
 var resetButton = document.getElementById('resetButton'); 
 var clearButton = document.getElementById('clearStorageButton'); 
 
-var players = [];
-var storedPlayers = [];
-
-function init() {
-    var playerString = localStorage.getItem('storedPlayers');
-    if(playerString !==null || playerString != '') {
-        storedPlayers = JSON.parse(playerString);
-        savedPlayers = storedPlayers;
-        renderPlayers(); 
-    }
-} 
-
-function storedPlayers() {
-    localStorage.setItem('savedPlayers', JSON.stringify(players));
-} 
-
-function renderPlayersList() { 
-    gameOverContainerEl.style.display = 'none';
-     highScoreContainerEl.style.display =  ''; 
-
-    playersList.textContent = ''; 
-    for(var i = 0; i < players.length; i++) {
-        players = players[i]; 
-
-        var li = document.createElement('li');
-        li.textContent = playerInfo;
-        playersList.appendChild(li);
-    } 
-    
-        submitButton.addEventListener('submit', function (event) {
-            event.preventDefault(); 
-
-        playerInitials = playerInput.value.trim();
-        if(playersInitials === '') {
-            return;
-        }
-        
-        players.push(playerInitials + score + 'points');
-        playerInitials.value = '';
-
-        storedPlayers();
-        renderPlayersList();
-        })
-    }  
-
-init();
 
 startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', loadNextQuestion);
@@ -109,29 +65,57 @@ function loadNextQuestion() {
             return;
         }
         loadQuestion(currentQuestion); 
-}
+} 
 
-renderPlayersList();
+var savedPlayersList = [];
+player = [];
 
-// var viewScoresEl = document.getElementById('viewScores');
-// viewHighScoresEl.addEventListener('click', getPlayers);
-// function getStoredPlayers() { 
+function getPlayersList() {
+    var playerString = localStorage.getItem('savedPlayersList');
+    if(playerString !==null || playerString != '') {
+        savedPlayersList = JSON.parse(playerString);
+        allPlayersList = savedPlayersList; 
+        allPlayersList.textContent = initials.value + ' - ' + score + 'points';
+    } 
+    getPlayersList();
+} 
+ 
+
+submitButton.addEventListener('submit', addPlayerToList); 
+
+function addPlayerToList() { 
+
+    gameOverContainerEl.style.display = 'none';
+    highScoreContainerEl.style.display =  ''; 
+    allPlayersList.textContent = initials.value.trim() +  ' - ' + score + 'points'; 
     
-//     quizContainerEl.style.display = 'none';
+    var playerInfo = {
+        initials: initials.value.trim(),
+        score: score,
+    }
+    savedPlayersList.push(playerInfo);
+    savePlayersList();
+ 
+function savePlayersList() {
+    localStorage.setItem('savedPlayersList', JSON.stringify(savedPlayersList));
+}  
+
+// viewHighScoresEl.addEventListener('click', viewHighScores);
+// function viewHighScores() { 
 //     highScoreContainerEl.style.display = '';
-//     localStorage.getItem('storedPlayers');
+//     getPlayersList();
 // }
 
-// function startOver () { 
-// 	highScore.style.display = "none";
-// 	start.style.display = "block";
-// 	// clear playerList
-// }
+resetButton.addEventListener('click',startOver); 
 
-// function clearStorage() {
-// // clear all stored scores from local storage
-// }
+function startOver () { 
+    window.location.reload();
+}  
 
-// resetButton.addEventListener('click', startOver);
-// clearButton.addEventListener('click', removeScores);
+clearButton.addEventListener('click', clear);
 
+function clear(){ 
+    allPlayersList.textContent = "";
+    window.localStorage.clear(savedPlayersList);
+    } 
+} 
