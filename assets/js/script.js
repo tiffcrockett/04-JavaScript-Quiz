@@ -15,21 +15,20 @@ var myScore = document.getElementById('myScore');
 var timer = document.getElementById('timer');
 var comment = document.getElementById('comment'); 
 var result = document.getElementById('result'); 
-var playerList = document.getElementById('allPlayersList');
-var initials = document.getElementById('initials')
+var allPlayersList = document.getElementById('allPlayersList');
+var initials = document.getElementById('initials');
 var startButton = document.getElementById('startButton');
-var nexttButton = document.getElementById('nextButton');
+var nextButton = document.getElementById('nextButton');
 var submitButton = document.getElementById('submitButton');
 var resetButton = document.getElementById('resetButton'); 
 var clearButton = document.getElementById('clearStorageButton'); 
-
 
 startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', loadNextQuestion);
 
 function startQuiz() { 
     startContainerEl.style.display = 'none'; 
-    quizContainerEl.style.display = '';
+    quizContainerEl.style.display = ''; 
     loadQuestion(currentQuestion);
 }
 // // get questions from the question array
@@ -65,21 +64,9 @@ function loadNextQuestion() {
             return;
         }
         loadQuestion(currentQuestion); 
-} 
+}  
 
-var savedPlayersList = [];
-player = [];
-
-function getPlayersList() {
-    var playerString = localStorage.getItem('savedPlayersList');
-    if(playerString !==null || playerString != '') {
-        savedPlayersList = JSON.parse(playerString);
-        allPlayersList = savedPlayersList; 
-        allPlayersList.textContent = initials.value + ' - ' + score + 'points';
-    } 
-    getPlayersList();
-} 
- 
+var savedPlayersList = JSON.parse(localStorage.getItem('savedPlayersList')) || [];
 
 submitButton.addEventListener('submit', addPlayerToList); 
 
@@ -92,20 +79,32 @@ function addPlayerToList() {
     var playerInfo = {
         initials: initials.value.trim(),
         score: score,
-    }
-    savedPlayersList.push(playerInfo);
+    };
+    savedPlayersList.push(playerInfo); 
     savePlayersList();
- 
+}
+// at game over, save updated score from allPlayersList to local storage
 function savePlayersList() {
     localStorage.setItem('savedPlayersList', JSON.stringify(savedPlayersList));
 }  
 
-// viewHighScoresEl.addEventListener('click', viewHighScores);
-// function viewHighScores() { 
-//     highScoreContainerEl.style.display = '';
-//     getPlayersList();
-// }
+viewScoresEl.addEventListener('click',viewHighScores);
 
+function viewHighScores() {  
+    quizContainerEl.style.display = "none";
+    highScoreContainerEl.style.display = ''; 
+
+    var newSavedPlayersList;
+    for(var i = 0; i < savedPlayersList.length; i++) {
+    newSavedPlayersList = localStorage.getItem('savedPlayersList'); 
+
+    var li = document.createElement('li');
+    li.textContent = newSavedPlayersList;
+    
+    allPlayersList.textContent = newSavedPlayersList; 
+    }
+}   
+     
 resetButton.addEventListener('click',startOver); 
 
 function startOver () { 
@@ -117,5 +116,4 @@ clearButton.addEventListener('click', clear);
 function clear(){ 
     allPlayersList.textContent = "";
     window.localStorage.clear(savedPlayersList);
-    } 
 } 

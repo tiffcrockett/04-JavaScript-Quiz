@@ -43,6 +43,12 @@ h3 {
 	font-size: 40px;
 	font-style: bold;
 	padding-bottom: 20px;
+} 
+
+.view-btn {
+	border: none;
+	color: #0000ff;
+	cursor: pointer;
 }
 
 .start-btn {
@@ -55,6 +61,7 @@ h3 {
 	border-radius: 12px; 
 	font-size: 27px;
 	font-style: bold;
+	cursor: pointer;
 } 
 
 .start-btn:hover {
@@ -83,6 +90,7 @@ h3 {
 	margin: 10px 0 10px 10px;
 	color: #f6f6f6;
 	border-radius: 12px;
+	cursor: pointer;
 }
 
 .option:hover {
@@ -103,7 +111,8 @@ h3 {
     background-color: #88ad65;
 	border-radius: 12px;
 	font-size: 20px;
-	font-style: bold;
+	font-style: bold; 
+	cursor: pointer;
 }
 
 .next-btn:hover {
@@ -151,7 +160,7 @@ h3 {
 	margin: 15px 0 20px 0;
 	text-transform: uppercase;
 	font-size: 25px;
-} 
+}  
 
 .reset-btn { 
 	height: 45px;
@@ -163,6 +172,7 @@ h3 {
 	border-radius: 12px;
 	font-size: 20px;
 	font-style: bold;
+	cursor: pointer;
 }
 
 .reset-btn:hover {
@@ -179,6 +189,7 @@ h3 {
 	border-radius: 12px;
 	font-size: 20px;
 	font-style: bold;
+	cursor: pointer;
 }
 
 .clear-btn:hover {

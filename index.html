@@ -20,9 +20,7 @@
 
                 <div id="quiz" class="container" style="display: none;">  
                     <div class="timeScore">
-                        <div id="viewScores">
-                            <a href='#allPlayersList;'>View High Scores</a>
-                        </div>
+                        <button id="viewScores" class="view-btn" onclick="viewHighScores();">View High Scores</button>
                         <div id="myScore"></div>
                         <div id="timer">Timer:
                             <div id="minutes">02:00</div>
@@ -55,7 +53,7 @@
                 <div id="highScore" class="container" style="display: none;">
                     <div class="noTimeScore">
                         <h3><b>High Scores</b></h3>
-                        <div id="allPlayersList"></div>
+                        <ul id="allPlayersList"></ul>
                         <button id="resetButton" class="reset-btn" onclick="startOver();">START OVER</button><br>
                         <button id="clearStorageButton" class="clear-btn" onclick="clear();">CLEAR HIGH SCORES</button>
                     </div>
