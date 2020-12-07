@@ -32,7 +32,7 @@ function quizTimer() {
 
     if(timeLeft == -1) {
         clearInterval(decrmnt);
-        quizContainerEl.style.display = "none"
+        quizContainerEl.style.display = "none";
         gameOverContainerEl.style.display = ''; 
    
         var playerInfo = {
@@ -43,9 +43,8 @@ function quizTimer() {
         savePlayersList();
     } 
 }
-window.onload = () => {
-    startButton.addEventListener('click', quizTimer, startQuiz);
-}
+
+startButton.addEventListener('click', quizTimer, startQuiz);
 
 nextButton.addEventListener('click', loadNextQuestion);
 
@@ -92,10 +91,7 @@ function loadNextQuestion() {
 // get saved player initials and scores from local storage
 var savedPlayersList = JSON.parse(localStorage.getItem('savedPlayersList')) || [];
 
-submitButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    addPlayerToList();
-}); 
+submitButton.addEventListener('click', addPlayerToList); 
 
 // player completes questions - show score and user adds initials 
 function addPlayerToList() { 
@@ -146,4 +142,4 @@ clearButton.addEventListener('click', clear);
 function clear(){ 
     allPlayersList.textContent = "";
     window.localStorage.clear(savedPlayersList);
-} 
+}

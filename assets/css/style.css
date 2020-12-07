@@ -153,13 +153,13 @@ h3 {
 } 
 
 #highScore {
-	font-size: 18px;
+	font-size: 15px;
 } 
 
 #allPlayersList { 
 	margin: 15px 0 20px 0;
 	text-transform: uppercase;
-	font-size: 25px;
+	font-size: 15px;
 }  
 
 .reset-btn { 
