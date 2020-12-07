@@ -34,4 +34,32 @@ var questions = [{
     "option3":  "Event",
     "option4":  "Number",
     "answer":   "1"
+}, {
+    "question": "The JS object stores what?",
+    "option1":  "operator, statement",
+    "option2":  "strings, numbers",
+    "option3":  "key value-pair",
+    "option4":  "array, method",
+    "answer":   "3"
+}, {
+    "question": "Stores multiple values in a single variable?",
+    "option1":  "Array",
+    "option2":  "URL",
+    "option3":  "Event",
+    "option4":  "Number",
+    "answer":   "1" 
+}, {
+    "question": "Which type is not valid loop?",
+    "option1":  "for loop",
+    "option2":  "event loop",
+    "option3":  "while loop",
+    "option4":  "do while loop",
+    "answer":   "2"
+}, {
+    "question": "DOM is short for?",
+    "option1":  "Document Oject Modified",
+    "option2":  "Document Object Method",
+    "option3":  "Document Object Manipulation",
+    "option4":  "Document Object Model",
+    "answer":   "4"
 }];

@@ -43,8 +43,10 @@ function quizTimer() {
         savePlayersList();
     } 
 }
+window.onload = () => {
+    startButton.addEventListener('click', quizTimer, startQuiz);
+}
 
-startButton.addEventListener('click', quizTimer, startQuiz);
 nextButton.addEventListener('click', loadNextQuestion);
 
 function startQuiz() { 
@@ -90,7 +92,10 @@ function loadNextQuestion() {
 // get saved player initials and scores from local storage
 var savedPlayersList = JSON.parse(localStorage.getItem('savedPlayersList')) || [];
 
-submitButton.addEventListener('submit', addPlayerToList); 
+submitButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    addPlayerToList();
+}); 
 
 // player completes questions - show score and user adds initials 
 function addPlayerToList() { 
@@ -112,7 +117,7 @@ function savePlayersList() {
     localStorage.setItem('savedPlayersList', JSON.stringify(savedPlayersList));
 }  
 
-viewScoresEl.addEventListener('click',viewHighScores);
+viewScoresEl.addEventListener('click', viewHighScores);
 
 // retrieves local storage and prints to highScore div
 function viewHighScores() {  
@@ -130,7 +135,7 @@ function viewHighScores() {
     }
 }   
 // play again - local storage is retained  
-resetButton.addEventListener('click',startOver); 
+resetButton.addEventListener('click', startOver); 
 
 function startOver () { 
     window.location.reload();
