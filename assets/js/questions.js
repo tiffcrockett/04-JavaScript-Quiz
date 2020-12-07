@@ -28,18 +28,18 @@ var questions = [{
      "option4": "Math.floor",
      "answer": "4"
 }, {
-    "question": "Stores multiple values in a single variable?",
-    "option1":  "Array",
-    "option2":  "URL",
-    "option3":  "Event",
-    "option4":  "Number",
+    "question": "Which is NOT a valid keyword to declare variables?",
+    "option1":  "for",
+    "option2":  "var",
+    "option3":  "const",
+    "option4":  "let",
     "answer":   "1"
 }, {
     "question": "The JS object stores what?",
-    "option1":  "operator, statement",
+    "option1":  "operators, statements",
     "option2":  "strings, numbers",
-    "option3":  "key value-pair",
-    "option4":  "array, method",
+    "option3":  "key value-pairs",
+    "option4":  "arrays, methods",
     "answer":   "3"
 }, {
     "question": "Stores multiple values in a single variable?",
@@ -49,7 +49,7 @@ var questions = [{
     "option4":  "Number",
     "answer":   "1" 
 }, {
-    "question": "Which type is not valid loop?",
+    "question": "Which type is NOT valid loop?",
     "option1":  "for loop",
     "option2":  "event loop",
     "option3":  "while loop",

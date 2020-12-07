@@ -40,9 +40,10 @@ function quizTimer() {
             score: score,
         };
         savedPlayersList.push(playerInfo); 
-        savePlayersList();
-    } 
-}
+        savePlayersList(); 
+        return;
+   }    
+}       
 
 startButton.addEventListener('click', quizTimer, startQuiz);
 
@@ -140,6 +141,6 @@ function startOver () {
 clearButton.addEventListener('click', clear);
 
 function clear(){ 
-    allPlayersList.textContent = "";
+    allPlayersList.textContent = '';
     window.localStorage.clear(savedPlayersList);
 }
