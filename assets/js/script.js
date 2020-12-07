@@ -12,7 +12,6 @@ var opt3 = document.getElementById('opt3');
 var opt4 = document.getElementById('opt4'); 
 var viewScoresEl = document.getElementById('viewScores');
 var myScore = document.getElementById('myScore');
-var timer = document.getElementById('timer');
 var comment = document.getElementById('comment'); 
 var result = document.getElementById('result'); 
 var allPlayersList = document.getElementById('allPlayersList');
@@ -23,7 +22,30 @@ var submitButton = document.getElementById('submitButton');
 var resetButton = document.getElementById('resetButton'); 
 var clearButton = document.getElementById('clearStorageButton'); 
 
-startButton.addEventListener('click', startQuiz);
+var timerDisplay = document.getElementById('timer');
+var timeLeft = 60;  
+var decrmnt = setInterval(quizTimer, 1000);
+
+function quizTimer() {
+    timerDisplay.textContent = 'Timer Left: ' + timeLeft;
+    timeLeft--; 
+
+    if(timeLeft == -1) {
+        clearInterval(decrmnt);
+        quizContainerEl.style.display = "none"
+        gameOverContainerEl.style.display = ''; 
+   
+        var playerInfo = {
+            initials: initials.value.trim(),
+            score: score,
+        };
+        savedPlayersList.push(playerInfo); 
+        savePlayersList();
+    } 
+        startContainerEl.style.display = ''; 
+}
+
+startButton.addEventListener('click', quizTimer, startQuiz);
 nextButton.addEventListener('click', loadNextQuestion);
 
 function startQuiz() { 
@@ -57,22 +79,24 @@ function loadNextQuestion() {
         } 
         playerChoice.checked = false;
         currentQuestion++;
-        if(currentQuestion === totalQuestions) {
+        if(currentQuestion === totalQuestions) { 
             quizContainerEl.style.display = 'none';
             gameOverContainerEl.style.display = '';
             result.textContent = 'Your Score: ' + score;
-            return;
+            return; 
         }
-        loadQuestion(currentQuestion); 
-}  
+    loadQuestion(currentQuestion);  
+}
 
+// get saved player initials and scores from local storage
 var savedPlayersList = JSON.parse(localStorage.getItem('savedPlayersList')) || [];
 
 submitButton.addEventListener('submit', addPlayerToList); 
 
+// player completes questions - show score and user adds initials 
 function addPlayerToList() { 
 
-    gameOverContainerEl.style.display = 'none';
+    gameOverContainerEl.style.display = 'none'; 
     highScoreContainerEl.style.display =  ''; 
     allPlayersList.textContent = initials.value.trim() +  ' - ' + score + 'points'; 
     
@@ -82,14 +106,16 @@ function addPlayerToList() {
     };
     savedPlayersList.push(playerInfo); 
     savePlayersList();
-}
-// at game over, save updated score from allPlayersList to local storage
+} 
+
+// save player initials and score  - add or create local storage string
 function savePlayersList() {
     localStorage.setItem('savedPlayersList', JSON.stringify(savedPlayersList));
 }  
 
 viewScoresEl.addEventListener('click',viewHighScores);
 
+// retrieves local storage and prints to highScore div
 function viewHighScores() {  
     quizContainerEl.style.display = "none";
     highScoreContainerEl.style.display = ''; 
@@ -104,13 +130,13 @@ function viewHighScores() {
     allPlayersList.textContent = newSavedPlayersList; 
     }
 }   
-     
+// play again - local storage is retained  
 resetButton.addEventListener('click',startOver); 
 
 function startOver () { 
     window.location.reload();
 }  
-
+// clears visible player initials and score from highScore div and clears local storage
 clearButton.addEventListener('click', clear);
 
 function clear(){ 

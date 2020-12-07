@@ -14,7 +14,7 @@
                     <div class="noTimeScore">
                         <h3><b>JAVASCRIPT QUIZ</b></h3>
                             <p id="header2">Test your knowledge of JavaScript</p>
-                            <button id="startButton" class="start-btn" onclick="startQuiz();"><b>START</b></button>  
+                            <button id="startButton" class="start-btn" onclick="quizTimer(); startQuiz();"><b>START</b></button>  
                     </div> 
                 </div> 
 
@@ -22,9 +22,7 @@
                     <div class="timeScore">
                         <button id="viewScores" class="view-btn" onclick="viewHighScores();">View High Scores</button>
                         <div id="myScore"></div>
-                        <div id="timer">Timer:
-                            <div id="minutes">02:00</div>
-                            <div id="seconds"></div> 
+                        <div id="timer">
                         </div>
                     </div>
                     <div class="quiz-quest-area">
