@@ -42,7 +42,6 @@ function quizTimer() {
         savedPlayersList.push(playerInfo); 
         savePlayersList();
     } 
-        startContainerEl.style.display = ''; 
 }
 
 startButton.addEventListener('click', quizTimer, startQuiz);
