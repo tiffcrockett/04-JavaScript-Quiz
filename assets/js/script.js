@@ -45,15 +45,15 @@ function quizTimer() {
    }    
 }       
 
-startButton.addEventListener('click', quizTimer, startQuiz);
-
-nextButton.addEventListener('click', loadNextQuestion);
+startButton.addEventListener('click', function(event) {
+    event.preventDefault();
+});
 
 function startQuiz() { 
     startContainerEl.style.display = 'none'; 
     quizContainerEl.style.display = ''; 
     loadQuestion(currentQuestion);
-}
+} 
 // // get questions from the question array
 function loadQuestion(questionIndex) {  
     var questn = questions[questionIndex];  
@@ -63,6 +63,10 @@ function loadQuestion(questionIndex) {
     opt3.textContent = questn.option3;
     opt4.textContent = questn.option4; 
  }  
+
+ nextButton.addEventListener('click', function(event){
+     event.preventDefault();
+ });
 
 function loadNextQuestion() { 
     //player must choose an option for quiz to proceed 
@@ -93,7 +97,9 @@ function loadNextQuestion() {
 // get saved player initials and scores from local storage
 var savedPlayersList = JSON.parse(localStorage.getItem('savedPlayersList')) || [];
 
-submitButton.addEventListener('click', addPlayerToList); 
+submitButton.addEventListener('click', function(event){
+    event.preventDefault();
+}); 
 
 // player completes questions - show score and user adds initials 
 function addPlayerToList() { 
@@ -108,6 +114,7 @@ function addPlayerToList() {
     };
     savedPlayersList.push(playerInfo); 
     savePlayersList();
+    return;
 } 
 
 // save player initials and score  - add or create local storage string
@@ -115,7 +122,9 @@ function savePlayersList() {
     localStorage.setItem('savedPlayersList', JSON.stringify(savedPlayersList));
 }  
 
-viewScoresEl.addEventListener('click', viewHighScores);
+viewScoresEl.addEventListener('click', function(event){
+    event.preventDefault();
+});
 
 // retrieves local storage and prints to highScore div
 function viewHighScores() {  
@@ -130,12 +139,15 @@ function viewHighScores() {
     li.textContent = newSavedPlayersList;
     
     allPlayersList.textContent = newSavedPlayersList; 
+
     }
 }   
 // play again - local storage is retained  
-resetButton.addEventListener('click', startOver); 
+resetButton.addEventListener('click', function(event){
+    event.preventDefault();
+}); 
 
-function startOver () { 
+function startOver() { 
     window.location.reload();
 }  
 // clears visible player initials and score from highScore div and clears local storage
@@ -143,5 +155,5 @@ clearButton.addEventListener('click', clear);
 
 function clear(){ 
     allPlayersList.textContent = '';
-    window.localStorage.clear();
+    window.localStorage.clear('savedPlayersList');
 }
