@@ -74,7 +74,8 @@ function loadNextQuestion() {
             myScore.textContent = 'Score: ' + score;
             comment.style.display = '';
             comment.textContent = 'Your answer is correct!'; 
-            } else {   
+            } else {  
+            timeLeft -=5; 
             comment.style.display = '';
             comment.textContent = 'Wrong answer!'; 
         } 
