@@ -45,9 +45,7 @@ function quizTimer() {
    }    
 }       
 
-startButton.addEventListener('click', function(event) {
-    event.preventDefault();
-});
+startButton.addEventListener('click', startQuiz);
 
 function startQuiz() { 
     startContainerEl.style.display = 'none'; 
@@ -64,9 +62,7 @@ function loadQuestion(questionIndex) {
     opt4.textContent = questn.option4; 
  }  
 
- nextButton.addEventListener('click', function(event){
-     event.preventDefault();
- });
+ nextButton.addEventListener('click', loadNextQuestion);
 
 function loadNextQuestion() { 
     //player must choose an option for quiz to proceed 
@@ -139,15 +135,14 @@ function viewHighScores() {
     li.textContent = newSavedPlayersList;
     
     allPlayersList.textContent = newSavedPlayersList; 
-
-    }
+    
+    } 
 }   
 // play again - local storage is retained  
-resetButton.addEventListener('click', function(event){
-    event.preventDefault();
-}); 
+resetButton.addEventListener('click', startOver);
 
 function startOver() { 
+    clear(viewScoresEl);
     window.location.reload();
 }  
 // clears visible player initials and score from highScore div and clears local storage
