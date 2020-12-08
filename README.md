@@ -6,7 +6,7 @@ This is my second JavaScript application. The quiz functions and logically progr
 
 # Screenshot 
 
-![image]https://github.com/tiffcrockett/04-JavaScript-Quiz/blob/main/assets/images/JS%20Quiz%20Scrnsht.png? 
+![image](https://github.com/tiffcrockett/04-JavaScript-Quiz/blob/main/assets/images/JS%20Quiz%20Scrnsht.png?) 
 
 
 #Link
