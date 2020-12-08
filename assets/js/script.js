@@ -143,5 +143,5 @@ clearButton.addEventListener('click', clear);
 
 function clear(){ 
     allPlayersList.textContent = '';
-    window.localStorage.clear(savedPlayersList);
+    window.localStorage.clear();
 }
