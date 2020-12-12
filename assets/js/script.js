@@ -30,7 +30,7 @@ function quizTimer() {
     timerDisplay.textContent = 'Timer Left: ' + timeLeft;
     timeLeft--; 
 
-    if(timeLeft == -1) {
+    if(timeLeft <== -1) {
         clearInterval(decrmnt);
         quizContainerEl.style.display = "none";
         gameOverContainerEl.style.display = ''; 
