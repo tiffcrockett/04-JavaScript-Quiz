@@ -30,7 +30,7 @@ function quizTimer() {
     timerDisplay.textContent = 'Timer Left: ' + timeLeft;
     timeLeft--; 
 
-    if(timeLeft == -1) {
+    if(timeLeft <= -1) {
         clearInterval(decrmnt);
         quizContainerEl.style.display = "none";
         gameOverContainerEl.style.display = ''; 
@@ -142,7 +142,7 @@ function viewHighScores() {
 resetButton.addEventListener('click', startOver);
 
 function startOver() { 
-    clear(viewScoresEl);
+    empty(viewScoresEl);
     window.location.reload();
 }  
 // clears visible player initials and score from highScore div and clears local storage
