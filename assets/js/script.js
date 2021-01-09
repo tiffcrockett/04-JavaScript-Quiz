@@ -143,7 +143,7 @@ resetButton.addEventListener('click', startOver);
 
 function startOver() { 
     empty(viewScoresEl);
-    window.location.reload();
+    location.reload();
 }  
 // clears visible player initials and score from highScore div and clears local storage
 clearButton.addEventListener('click', clear);
